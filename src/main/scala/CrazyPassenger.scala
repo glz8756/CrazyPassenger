@@ -9,10 +9,9 @@ object CrazyPassenger {
     seatKeys(random.nextInt(seatKeys.length))
   }
 
-  def simulation(seat: Int, passenge: Int): Boolean = {
-    val passengerList = (1 to passenge).toList
+  def simulation(seat: Int, passenger: Int): Boolean = {
+    val passengerList = (1 to passenger).toList
     val seatMap = (1 to seat).map(s => (s, 0)).toMap
-
     @tailrec
     def simulationTailRec(remainingPassenger: List[Int], seatMap: Map[Int, Int]): Boolean = {
       if (remainingPassenger.isEmpty) false
@@ -39,5 +38,4 @@ object CrazyPassenger {
 
   def simulationProbability(n: Int, numberOfSeats: Int, numberOfPassengers: Int): Double =
     (1 to n).map(_ => if (simulation(numberOfSeats, numberOfPassengers)) 1.00 else 0.00).sum / n.toDouble
-
 }
